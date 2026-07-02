@@ -1,0 +1,41 @@
+.apod-card {
+
+    max-width: 1000px;
+
+    margin: 40px auto;
+
+    background: #111827;
+
+    border-radius: 15px;
+
+    padding: 20px;
+
+    color: white;
+
+    box-shadow: 0 0 25px rgba(0,255,255,.15);
+
+}
+
+.apod-image{
+
+    width:100%;
+
+    border-radius:12px;
+
+}
+
+.date{
+
+    color:#38bdf8;
+
+    font-weight:bold;
+
+}
+
+.description{
+
+    line-height:1.8;
+
+    color:#d1d5db;
+
+}

@@ -1,11 +1,17 @@
-<input
-type="date"
-value={date}
-onChange={(e)=>setDate(e.target.value)}
-/>
+function DatePicker({ date, setDate, onSearch }) {
+  return (
+    <div>
+      <input
+        type="date"
+        value={date}
+        onChange={(e) => setDate(e.target.value)}
+      />
 
-<button>
+      <button onClick={onSearch}>
+        Search
+      </button>
+    </div>
+  );
+}
 
-Search
-
-</button>
+export default DatePicker;

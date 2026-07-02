@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { fetchAPOD } from "./services/nasaApi";
+import DatePicker from "./components/DatePicker";
+import APODCard from "./components/APODCard";
 
 function App() {
   // Store NASA image data
@@ -45,25 +47,22 @@ function App() {
     <div>
       <h1>🚀 NASA Daily Explorer</h1>
 
+        <DatePicker
+          date={date}
+          setDate={setDate}
+          onSearch={() => {
+  console.log("Current date:", date);
+  loadImage(date);
+}}
+        />
+
       {loading && <p>Loading...</p>}
 
       {error && <p>{error}</p>}
 
       {imageData && (
-        <div>
-          <img
-            src={imageData.hdurl || imageData.url}
-            alt={imageData.title}
-            width="700"
-          />
-
-          <h2>{imageData.title}</h2>
-
-          <p>{imageData.date}</p>
-
-          <p>{imageData.explanation}</p>
-        </div>
-      )}
+    <APODCard imageData={imageData} />
+)}
     </div>
   );
 }

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { fetchAPOD } from "./services/nasaApi";
 import DatePicker from "./components/DatePicker";
 import APODCard from "./components/APODCard";
+import Loader from "./components/Loader";
 
 function App() {
   // Store NASA image data
@@ -56,7 +57,7 @@ function App() {
 }}
         />
 
-      {loading && <p>Loading...</p>}
+      {loading && <Loader />}
 
       {error && <p>{error}</p>}
 

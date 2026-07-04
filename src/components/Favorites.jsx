@@ -1,9 +1,41 @@
-favorites.map((item)=>(
-<div key={item.date}>
+function Favorites({ favorites }) {
+  return (
+    <div className="favorites-section">
 
-<img src={item.url}/>
+      <h2>⭐ Favorite Images</h2>
 
-<p>{item.title}</p>
+      {
+        favorites.length === 0 ? (
 
-</div>
-))
+          <p>No favorites yet.</p>
+
+        ) : (
+
+          favorites.map((item) => (
+
+            <div
+              className="favorite-card"
+              key={item.date}
+            >
+
+              <img
+                src={item.url}
+                alt={item.title}
+              />
+
+              <h4>{item.title}</h4>
+
+              <p>{item.date}</p>
+
+            </div>
+
+          ))
+
+        )
+      }
+
+    </div>
+  );
+}
+
+export default Favorites;

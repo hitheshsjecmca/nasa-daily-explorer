@@ -1,6 +1,9 @@
 import "../styles/Card.css";
 
-function APODCard({ imageData }) {
+function APODCard({
+imageData,
+saveFavorite
+}) {
   return (
     <div className="apod-card">
 
@@ -19,6 +22,11 @@ function APODCard({ imageData }) {
       <p className="description">
         {imageData.explanation}
       </p>
+      <button onClick={saveFavorite}>
+
+⭐ Save Favorite
+
+</button>
 
     </div>
   );

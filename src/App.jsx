@@ -3,6 +3,7 @@ import { fetchAPOD } from "./services/nasaApi";
 import DatePicker from "./components/DatePicker";
 import APODCard from "./components/APODCard";
 import Loader from "./components/Loader";
+import Favorites from "./components/Favorites";
 
 function App() {
   // Store NASA image data
@@ -16,6 +17,8 @@ function App() {
 
   // Error message
   const [error, setError] = useState("");
+
+  const [favorites, setFavorites] = useState([]);
 
   // Fetch NASA image
   const loadImage = async (selectedDate = "") => {
@@ -44,6 +47,47 @@ function App() {
     loadImage();
   }, []);
 
+  const saveFavorite = () => {
+
+  if (!imageData) return;
+
+  const alreadyExists = favorites.some(
+    (item) => item.date === imageData.date
+  );
+
+  if (alreadyExists) {
+    alert("Already Saved!");
+    return;
+  }
+
+  const updatedFavorites = [
+    ...favorites,
+    imageData,
+  ];
+
+  setFavorites(updatedFavorites);
+
+  localStorage.setItem(
+    "favorites",
+    JSON.stringify(updatedFavorites)
+  );
+};
+
+
+useEffect(() => {
+
+  const savedFavorites = JSON.parse(
+    localStorage.getItem("favorites")
+  );
+
+  if (savedFavorites) {
+
+    setFavorites(savedFavorites);
+
+  }
+
+}, []);
+
   return (
     <div>
       <h1>🚀 NASA Daily Explorer</h1>
@@ -62,8 +106,15 @@ function App() {
       {error && <p>{error}</p>}
 
       {imageData && (
-    <APODCard imageData={imageData} />
+    <APODCard
+
+imageData={imageData}
+
+saveFavorite={saveFavorite}
+
+/>
 )}
+<Favorites favorites={favorites} />
     </div>
   );
 }

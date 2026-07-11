@@ -1,4 +1,4 @@
-function Favorites({ favorites }) {
+function Favorites({ favorites, removeFavorite }) {
   return (
     <div className="favorites-section">
 
@@ -27,6 +27,15 @@ function Favorites({ favorites }) {
 
               <p>{item.date}</p>
 
+              <button
+
+onClick={() => removeFavorite(item.date)}
+
+>
+
+❌ Remove
+
+</button>
             </div>
 
           ))

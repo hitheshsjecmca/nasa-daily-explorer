@@ -4,6 +4,7 @@ import DatePicker from "./components/DatePicker";
 import APODCard from "./components/APODCard";
 import Loader from "./components/Loader";
 import Favorites from "./components/Favorites";
+import Navbar from "./components/Navbar";
 
 function App() {
   // Store NASA image data
@@ -88,9 +89,24 @@ useEffect(() => {
 
 }, []);
 
+const removeFavorite = (date) => {
+
+  const updatedFavorites = favorites.filter(
+    (item) => item.date !== date
+  );
+
+  setFavorites(updatedFavorites);
+
+  localStorage.setItem(
+    "favorites",
+    JSON.stringify(updatedFavorites)
+  );
+
+};
+
   return (
     <div>
-      <h1>🚀 NASA Daily Explorer</h1>
+      <Navbar />
 
         <DatePicker
           date={date}
@@ -114,7 +130,13 @@ saveFavorite={saveFavorite}
 
 />
 )}
-<Favorites favorites={favorites} />
+<Favorites
+
+favorites={favorites}
+
+removeFavorite={removeFavorite}
+
+/>
     </div>
   );
 }

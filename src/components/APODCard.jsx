@@ -22,12 +22,26 @@ saveFavorite
       <p className="description">
         {imageData.explanation}
       </p>
-      <button onClick={saveFavorite}>
+      <div className="action-buttons">
 
-⭐ Save Favorite
+  <button
+    className="favorite-btn"
+    onClick={saveFavorite}
+  >
+    ⭐ Save Favorite
+  </button>
 
-</button>
+  <a
+    href={imageData.hdurl || imageData.url}
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <button className="download-btn">
+      📥 Download HD Image
+    </button>
+  </a>
 
+</div>
     </div>
   );
 }

@@ -1,6 +1,8 @@
+import "../styles/DatePicker.css";
+
 function DatePicker({ date, setDate, onSearch }) {
   return (
-    <div>
+    <div className="date-container">
       <input
         type="date"
         value={date}
@@ -8,7 +10,7 @@ function DatePicker({ date, setDate, onSearch }) {
       />
 
       <button onClick={onSearch}>
-        Search
+        🔍 Search
       </button>
     </div>
   );

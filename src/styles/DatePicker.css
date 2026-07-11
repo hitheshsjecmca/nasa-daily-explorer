@@ -1,0 +1,51 @@
+.date-container{
+
+display:flex;
+
+justify-content:center;
+
+gap:15px;
+
+margin:30px;
+
+flex-wrap:wrap;
+
+}
+
+.date-container input{
+
+padding:10px 20px;
+
+font-size:16px;
+
+border:none;
+
+border-radius:8px;
+
+}
+
+.date-container button{
+
+padding:10px 25px;
+
+background:#0ea5e9;
+
+color:white;
+
+border:none;
+
+border-radius:8px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.date-container button:hover{
+
+background:#0284c7;
+
+transform:scale(1.05);
+
+}
